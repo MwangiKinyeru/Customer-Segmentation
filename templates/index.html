@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segment Predictor</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .info-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .info-box li {
+            padding: 5px 0;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .info-box strong {
+            color: #667eea;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Customer Segment Predictor</h1>
+            <p>Enter customer details to predict their segment</p>
+        </div>
+        
+        <div class="form-container">
+            <form action="/predict" method="POST">
+                <div class="form-group">
+                    <label for="recency">📅 Days Since Last Purchase (Recency)</label>
+                    <input type="number" id="recency" name="recency" required 
+                           placeholder="e.g., 30" min="0" step="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="frequency">🛒 Total Number of Purchases (Frequency)</label>
+                    <input type="number" id="frequency" name="frequency" required 
+                           placeholder="e.g., 15" min="0" step="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="monetary">💰 Total Amount Spent in USD (Monetary)</label>
+                    <input type="number" id="monetary" name="monetary" required 
+                           placeholder="e.g., 8500" min="0" step="0.01">
+                </div>
+                
+                <button type="submit" class="submit-btn">📊 Predict Customer Segment</button>
+            </form>
+            
+            <div class="info-box">
+                <h3>📝 About Customer Segments</h3>
+                <ul>
+                    <li><strong>Regular, Lapsed, Occasional, Premium</strong> – Standard customer segments</li>
+                    <li><strong>High Spender</strong> – Spends over $3,799 (exceptional value)</li>
+                    <li><strong>Power Shopper</strong> – Makes over 11 purchases (very active)</li>
+                    <li><strong>Elite</strong> – Both high spending AND high frequency (VIP)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Customer Segmentation Model | Built with Machine Learning</p>
+            <p><a href="/about">Learn more about segments</a></p>
+        </div>
+    </div>
+</body>
+</html>

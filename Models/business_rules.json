@@ -1,0 +1,16 @@
+{
+    "outlier_thresholds": {
+        "monetary": 3799.39,
+        "frequency": 11
+    },
+    "cluster_mapping": {
+        "Regular": "Regular Customer",
+        "Lapsed": "Lapsed Customer",
+        "Occasional": "Occasional Customer",
+        "Premium": "Premium Customer",
+        "High_Spender": "High Spender Customer",
+        "Power_Shopper": "Power Shopper Customer",
+        "Elite": "Elite Customer"
+    },
+    "response_template": "✅ Customer classified as: {segment}"
+}
