@@ -12,5 +12,5 @@
         "Power_Shopper": "Power Shopper Customer",
         "Elite": "Elite Customer"
     },
-    "response_template": "✅ Customer classified as: {segment}"
+    "response_template": "Customer classified as: {segment}"
 }
