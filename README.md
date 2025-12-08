@@ -15,6 +15,9 @@ A comprehensive unsupervised learning solution that segments retail customers in
 
 ## Architecture
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/MwangiKinyeru/Customer-Segmentation/main/Images/deepseek_mermaid_20251208_cfd845.png" width="80%" alt="Customer Segmentation Workflow Diagram" />
+</p>
 
 ## Technical Stack
 >> * Data Processing: Python, Pandas, NumPy
@@ -29,8 +32,8 @@ This project implements a tiered customer segmentation system that combines rule
 ## UI Preview
 
 <p float="left">
-  <img src="https://github.com/MwangiKinyeru/Nitram-DB-Finance-bot-LLM/blob/main/Ui%20Preview/Capture.PNG" width="45%" />
-  <img src="https://github.com/MwangiKinyeru/Nitram-DB-Finance-bot-LLM/blob/main/Ui%20Preview/Capture%201.PNG" width="45%" />
+  <img src="https://github.com/MwangiKinyeru/Customer-Segmentation/blob/main/Images/Capture.PNG" width="45%" />
+  <img src="https://github.com/MwangiKinyeru/Customer-Segmentation/blob/main/Images/Capture%202.PNG" width="45%" />
 </p>
 
 
