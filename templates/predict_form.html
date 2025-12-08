@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Customer Segment | King's Landing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #1a2a6c;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #1a2a6c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .back-btn:hover {
+            background: #2a3a8c;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #1a2a6c;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: white;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .info-note {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #555;
+            border-left: 4px solid #1a2a6c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">← Back to Home</a>
+        
+        <div class="header">
+            <h1>Predict Customer Segment</h1>
+            <p>Enter customer details to analyze their segment</p>
+        </div>
+        
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="recency">📅 Days Since Last Purchase</label>
+                <input type="number" id="recency" name="recency" required 
+                       placeholder="e.g., 30" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="frequency">🛒 Total Number of Purchases</label>
+                <input type="number" id="frequency" name="frequency" required 
+                       placeholder="e.g., 15" min="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="monetary">💰 Total Amount Spent ($)</label>
+                <input type="number" id="monetary" name="monetary" required 
+                       placeholder="e.g., 8500" min="0" step="0.01">
+            </div>
+            
+            <button type="submit" class="submit-btn">📊 Predict Segment</button>
+        </form>
+        
+        <div class="info-note">
+            <strong>Note:</strong> This system uses RFM analysis and machine learning 
+            to classify customers into strategic segments for targeted marketing.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Customer Segments | King's Landing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2a5298);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: white;
+            color: #1a2a6c;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            padding: 40px;
+            color: #333;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid;
+        }
+        
+        .section h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid;
+            padding-bottom: 10px;
+        }
+        
+        .section-title {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .premium { border-color: #6c5ce7; background: #6c5ce7; }
+        .regular { border-color: #0984e3; background: #0984e3; }
+        .occasional { border-color: #fd79a8; background: #fd79a8; }
+        .lapsed { border-color: #636e72; background: #636e72; }
+        .elite { border-color: #d63031; background: #d63031; }
+        .power-shopper { border-color: #00b894; background: #00b894; }
+        .high-spender { border-color: #e17055; background: #e17055; }
+        
+        .behavior, .action {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .behavior {
+            background: #e9ecef;
+            border-left: 4px solid #6c757d;
+        }
+        
+        .action {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        
+        .behavior h3, .action h3 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .cluster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .cluster-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .cluster-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cluster-card h3 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .cluster-code {
+            display: inline-block;
+            background: #1a2a6c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .thresholds {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .thresholds h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .threshold-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ffeaa7;
+        }
+        
+        .threshold-item:last-child {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .cluster-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>About Customer Segments</h1>
+            <p>Understanding Customer Behavior for Strategic Engagement</p>
+            <a href="/" class="back-btn">← Back to Home</a>
+        </div>
+        
+        <div class="content">
+            <!-- Standard Customer Segments -->
+            <div class="section">
+                <h2>Standard Customer Segments</h2>
+                <p>These segments are identified through RFM analysis and K-Means clustering of regular customer behavior patterns.</p>
+                
+                <div class="cluster-grid">
+                    <!-- Premium -->
+                    <div class="cluster-card">
+                        <div class="cluster-code">Cluster 3</div>
+                        <h3>Premium Customers</h3>
+                        <div class="behavior">
+                            <h3>Behavior</h3>
+                            <p>Strongest customers who spend the most, buy most often, and purchased recently. Clear ongoing engagement driving large share of value.</p>
+                        </div>
+                        <div class="action">
+                            <h3>Recommended Action</h3>
+                            <p>Offer early access, loyalty rewards, or personalized bundles. Encourage repeat spend with targeted cross-sell offers.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular -->
+                    <div class="cluster-card">
+                        <div class="cluster-code">Cluster 0</div>
+                        <h3>Regular Customers</h3>
+                        <div class="behavior">
+                            <h3>Behavior</h3>
+                            <p>Steady behavior with middle-range spending and frequency. Remain active and reliable, though not top spenders.</p>
+                        </div>
+                        <div class="action">
+                            <h3>Recommended Action</h3>
+                            <p>Grow value by sending small incentives, product reminders, or curated recommendations. Nudge toward higher frequency with limited-time deals.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Occasional -->
+                    <div class="cluster-card">
+                        <div class="cluster-code">Cluster 2</div>
+                        <h3>Occasional Customers</h3>
+                        <div class="behavior">
+                            <h3>Behavior</h3>
+                            <p>Infrequent buyers who spend less and purchase occasionally. Engage from time to time but not strong contributors.</p>
+                        </div>
+                        <div class="action">
+                            <h3>Recommended Action</h3>
+                            <p>Re-engage using simple reminders, light discounts, or seasonal campaigns. Show products based on past purchases to spark another visit.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Lapsed -->
+                    <div class="cluster-card">
+                        <div class="cluster-code">Cluster 1</div>
+                        <h3>Lapsed Customers</h3>
+                        <div class="behavior">
+                            <h3>Behavior</h3>
+                            <p>Least active with low spending and frequency. Very high recency indicates long period since last purchase. At risk of churn or already inactive.</p>
+                        </div>
+                        <div class="action">
+                            <h3>Recommended Action</h3>
+                            <p>Win-back plan with "we miss you" messages and strong offers. If no response, move to low-cost marketing list to avoid unnecessary spend.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outlier Segments -->
+            <div class="section">
+                <h2>Special Customer Segments (Outliers)</h2>
+                <p>These customers exhibit exceptional behavior that falls outside normal patterns and require specialized attention.</p>
+                
+                <div class="cluster-grid">
+                    <!-- High Spender -->
+                    <div class="cluster-card">
+                        <div class="cluster-code">Cluster A</div>
+                        <h3>High Spender Customers</h3>
+                        <div class="behavior">
+                            <h3>Behavior</h3>
+                            <p>Extremely high monetary value but low frequency. Spend large amounts in few purchases. Recency varies widely.</p>
+                        </div>
+                        <div class="action">
+                            <h3>Recommended Action</h3>
+                            <p>Encourage more frequent visits with personalized invitations, exclusive previews, or new stock reminders with small incentives.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Power Shopper -->
+                    <div class="cluster-card">
+                        <div class="cluster-code">Cluster B</div>
+                        <h3>Power Shopper Customers</h3>
+                        <div class="behavior">
+                            <h3>Behavior</h3>
+                            <p>High frequency but moderate monetary value. Repeat buyers who come often but don't spend large amounts per visit. Moderate recency.</p>
+                        </div>
+                        <div class="action">
+                            <h3>Recommended Action</h3>
+                            <p>Introduce loyalty programs, volume discounts, or bundles. Show higher-end items based on browsing/purchase history to grow value.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Elite -->
+                    <div class="cluster-card">
+                        <div class="cluster-code">Cluster C</div>
+                        <h3>Elite Customers</h3>
+                        <div class="behavior">
+                            <h3>Behavior</h3>
+                            <p>Outliers in both monetary value and frequency. Buy often and spend a lot. Strongest group including top 226 overlapping outliers.</p>
+                        </div>
+                        <div class="action">
+                            <h3>Recommended Action</h3>
+                            <p>Provide priority service, early access, and personalized communication. Avoid over-contacting but give meaningful rewards to maintain loyalty.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Thresholds Box -->
+            <div class="thresholds">
+                <h3>📊 Classification Thresholds</h3>
+                <div class="threshold-item">
+                    <span>High Spender Threshold:</span>
+                    <strong>$3,799.39+</strong>
+                </div>
+                <div class="threshold-item">
+                    <span>Power Shopper Threshold:</span>
+                    <strong>11+ purchases</strong>
+                </div>
+                <div class="threshold-item">
+                    <span>Elite Customer:</span>
+                    <strong>Both thresholds exceeded</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result | King's Landing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2a5298);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 700px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        /* Prediction Result Card */
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .result-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .result-text {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .result-description {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        /* Customer Details */
+        .details-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #1a2a6c;
+        }
+        
+        .details-card h3 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .detail-value {
+            color: #1a2a6c;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        /* Action Recommendations */
+        .action-card {
+            background: #fff3cd;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .action-card h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .action-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .action-list li {
+            padding: 10px 0;
+            color: #856404;
+            border-bottom: 1px solid #ffeaa7;
+        }
+        
+        .action-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1a2a6c, #2a5298);
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            border: none;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Segment-specific colors */
+        .elite { background: linear-gradient(135deg, #d63031, #e17055); }
+        .high-spender { background: linear-gradient(135deg, #e17055, #fdcb6e); }
+        .power-shopper { background: linear-gradient(135deg, #00b894, #00cec9); }
+        .premium { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+        .regular { background: linear-gradient(135deg, #0984e3, #74b9ff); }
+        .lapsed { background: linear-gradient(135deg, #636e72, #b2bec3); }
+        .occasional { background: linear-gradient(135deg, #fd79a8, #fab1a0); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .result-text {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Prediction Result</h1>
+            <p>Customer Segment Analysis Complete</p>
+        </div>
+        
+        <div class="content">
+            <!-- Prediction Result -->
+            <div class="result-card {{ segment|lower|replace(' ', '-')|replace('_', '-') }}">
+                <div class="result-icon">✅</div>
+                <div class="result-text">{{ response }}</div>
+                <div class="result-description">
+                    {% if 'Elite' in segment %}
+                    VIP Customer - Top-tier engagement
+                    {% elif 'High Spender' in segment %}
+                    Exceptional value per transaction
+                    {% elif 'Power Shopper' in segment %}
+                    Highly frequent purchases
+                    {% elif 'Premium' in segment %}
+                    Strong, consistent engagement
+                    {% elif 'Regular' in segment %}
+                    Steady, reliable customer
+                    {% elif 'Occasional' in segment %}
+                    Infrequent but valuable
+                    {% elif 'Lapsed' in segment %}
+                    Requires re-engagement
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Customer Details -->
+            <div class="details-card">
+                <h3>📊 Customer Details Analyzed</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Days Since Last Purchase:</span>
+                    <span class="detail-value">{{ recency }} days</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Total Number of Purchases:</span>
+                    <span class="detail-value">{{ frequency }}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Total Amount Spent:</span>
+                    <span class="detail-value">${{ "%.2f"|format(monetary) }}</span>
+                </div>
+            </div>
+            
+            <!-- Recommended Actions -->
+            <div class="action-card">
+                <h3>🎯 Recommended Actions</h3>
+                <ul class="action-list">
+                    {% if 'Elite' in segment %}
+                    <li>• Provide priority service and early access to new products</li>
+                    <li>• Assign dedicated account manager for personalized communication</li>
+                    <li>• Offer exclusive VIP rewards and meaningful loyalty benefits</li>
+                    <li>• Avoid over-contacting - focus on quality interactions</li>
+                    
+                    {% elif 'High Spender' in segment %}
+                    <li>• Offer premium products and high-end recommendations</li>
+                    <li>• Send personalized invitations and exclusive previews</li>
+                    <li>• Encourage more frequent visits with small incentives</li>
+                    <li>• Provide personalized service for large transactions</li>
+                    
+                    {% elif 'Power Shopper' in segment %}
+                    <li>• Introduce loyalty programs with volume discounts</li>
+                    <li>• Offer bundle deals and early access to sales</li>
+                    <li>• Show higher-end items based on purchase history</li>
+                    <li>• Engage with new product launches and promotions</li>
+                    
+                    {% elif 'Premium' in segment %}
+                    <li>• Offer early access to products and loyalty rewards</li>
+                    <li>• Create personalized bundles and cross-sell offers</li>
+                    <li>• Encourage repeat spending with targeted promotions</li>
+                    <li>• Include in premium customer communications</li>
+                    
+                    {% elif 'Regular' in segment %}
+                    <li>• Send small incentives and product reminders</li>
+                    <li>• Provide curated recommendations based on history</li>
+                    <li>• Nudge toward higher frequency with limited-time deals</li>
+                    <li>• Include in standard loyalty programs</li>
+                    
+                    {% elif 'Occasional' in segment %}
+                    <li>• Send simple reminders and light discounts</li>
+                    <li>• Run seasonal campaigns to spark interest</li>
+                    <li>• Show products based on past purchases</li>
+                    <li>• Use re-engagement emails with clear value</li>
+                    
+                    {% elif 'Lapsed' in segment %}
+                    <li>• Implement win-back plan with "we miss you" message</li>
+                    <li>• Offer strong incentives for returning</li>
+                    <li>• If no response, move to low-cost marketing list</li>
+                    <li>• Monitor for any re-engagement signals</li>
+                    
+                    {% else %}
+                    <li>• Standard customer engagement program</li>
+                    <li>• Monitor for behavior changes</li>
+                    <li>• Include in general marketing campaigns</li>
+                    {% endif %}
+                </ul>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="buttons">
+                <a href="/predict-form" class="btn btn-primary">📊 Predict Another Customer</a>
+                <a href="/" class="btn btn-secondary">🏠 Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
