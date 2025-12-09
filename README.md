@@ -39,6 +39,6 @@ This project implements a tiered customer segmentation system that combines rule
 
 ## Deployment
 
-The Financial bot was Deployed via render as a web application (Flask frontend). To access the the finance bot click the link below
->>> [Deployment Link](https://nitram-db-finance-bot-llm-1.onrender.com)
+The Customer segmentatiion system was Deployed via render as a web application. To access the the finance bot click the link below
+>>> [Deployment Link](https://customer-segmentation-g0b9.onrender.com)
 
